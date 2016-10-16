@@ -1,17 +1,23 @@
 {
-  "manifest_version": 2,
-
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
+  "name": "CourseHelper",
   "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "Deadpool.png",
-    "default_popup": "popup.html",
-    "default_title": "Click here!"
-  },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ]
+  "manifest_version": 2,
+  "description": "View RateMyProfessors ratings right from UND's course guide.",
+  "content_scripts": [
+    {
+      "matches": ["*://studentadmin.connectnd.us/psp/NDCSPRD_1/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_SCHD_W.GBL?Page=SSR_SS_WEEK&Action=A&ExactKeys=Y&EMPLID=1066893&TargetFrameName=None*"],
+      "js": ["main.js"],
+      "css": ["main.css"],
+      "html": ["main.html"]
+    }
+  ],
+  "permissions":
+  [
+    "http://www.ratemyprofessors.com/*",
+    "tabs"
+  ],
+  "background": {
+    	"scripts": ["data.js"],
+    	"persistent": false
+  }
 }
